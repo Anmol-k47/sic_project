@@ -5,6 +5,34 @@
 
 ---
 
+## 📸 Screenshots
+
+### Step 1: Run `python app.py` — Terminal Output
+
+The app auto-installs dependencies, builds the database, trains AI models, runs verification tests, and launches the Gradio UI.
+
+![Terminal Startup](screenshots/01_terminal_startup.png)
+
+### Step 2: Search Panel — Enter Job Query
+
+Describe the job or worker skills in Hindi/English. Use the 7 filters (Category, City, Experience, Work Type, Vehicle, Worker Type, Count) to narrow results.
+
+![Search Panel](screenshots/02_search_panel.png)
+
+### Step 3: AI-Powered Results
+
+The AI detects the category, extracts skills, expands your query, and shows ranked matches with live eShram worker counts. Source badges show 🌐 Live (Adzuna) vs 📚 NCO (verified seed).
+
+![Search Results](screenshots/03_search_results.png)
+
+### Step 4: Official Salary Benchmarks
+
+Scroll down to see government-sourced salary data for all 22 categories, with citations from MoSPI PLFS, NITI Aayog, ILO, and more.
+
+![Salary Benchmarks](screenshots/04_salary_benchmarks.png)
+
+---
+
 ## 🌐 Live Data Sources
 
 | #   | Source                                            | What It Provides                          | Auth             |
@@ -43,26 +71,36 @@ chmod +x run.sh && ./run.sh
 ### Option 2: Manual Setup
 
 ```bash
-# Clone the repo
+# 1. Clone the repo
 git clone https://github.com/YOUR_USERNAME/workmatch-pro.git
 cd workmatch-pro
 
-# Create virtual environment
+# 2. Create virtual environment
 python -m venv venv
-# Windows: venv\Scripts\activate
-# Linux/Mac: source venv/bin/activate
+# Windows:
+venv\Scripts\activate
+# Linux/Mac:
+source venv/bin/activate
 
-# Install dependencies
+# 3. Install dependencies
 pip install -r requirements.txt
 python -m spacy download en_core_web_sm
 
-# (Optional) Set up API keys
+# 4. (Optional) Set up API keys for live data
 cp .env.example .env
 # Edit .env with your Adzuna + OGD keys
 
-# Run the app
+# 5. Run the app
 python app.py
 ```
+
+### What happens on startup:
+
+1. ⚙️ Auto-installs all dependencies
+2. 🗄️ Builds SQLite database (170+ seed + live Adzuna jobs)
+3. 🧠 Trains SBERT embeddings + CNN classifier
+4. 🧪 Runs 16 verification tests (target: >60%)
+5. 🚀 Opens Gradio web UI with a shareable public link
 
 ---
 
@@ -76,8 +114,11 @@ ADZUNA_APP_KEY=your_key
 DATA_GOV_API_KEY=your_key      # Free at https://data.gov.in/user/register
 ```
 
-Without keys: runs on 170+ NCO-verified seed jobs.
-With keys: fetches 200+ live jobs from Adzuna India on every startup.
+| Mode                 | What You Get                              |
+| -------------------- | ----------------------------------------- |
+| **Without keys**     | 170+ NCO-verified seed jobs, offline mode |
+| **With Adzuna keys** | 200+ live jobs fetched on every startup   |
+| **With OGD key**     | Higher rate limits for eShram/PLFS data   |
 
 ---
 
@@ -97,9 +138,10 @@ workmatch-pro/
 ├── pipeline.py            # Matching pipeline with 7 filters
 ├── verification.py        # 16 accuracy test cases
 ├── ui.py                  # Gradio web interface
-├── seed_construction.py   # Jobs: Plumbing, Electrical, Carpentry, AC, Painting, Masonry
-├── seed_services.py       # Jobs: Delivery, Driver, Domestic, Food, Agriculture
-├── seed_urban.py          # Jobs: Apparel, Security, Manufacturing, Beauty, Healthcare, BPO, Sales, Vending, Waste
+├── seed_construction.py   # Plumbing, Electrical, Carpentry, AC, Painting, Masonry
+├── seed_services.py       # Delivery, Driver, Domestic, Food, Agriculture
+├── seed_urban.py          # Apparel, Security, Manufacturing, Beauty, Healthcare, BPO, Sales, Vending, Waste
+├── screenshots/           # README screenshots
 ├── requirements.txt       # Python dependencies
 ├── .env.example           # API key template
 ├── .gitignore             # Git ignore rules
@@ -139,6 +181,21 @@ workmatch-pro/
 
 ---
 
+## 🧪 Verification Tests
+
+The app runs 16 automated tests on launch:
+
+| Query                                    | Expected Category   | Expected Result   |
+| ---------------------------------------- | ------------------- | ----------------- |
+| `plumber pipe repair water tap leak`     | Plumbing            | ✅ Plumber        |
+| `maid cleaning sweeping jhadu pocha bai` | Domestic (Cleaning) | ✅ Maid           |
+| `delivery bike rider Swiggy Zomato gig`  | Gig Delivery        | ✅ Delivery Rider |
+| `kabaadi scrap waste picker recycling`   | Waste & Recycling   | ✅ Waste Picker   |
+
+Target accuracy: **>60%** (typically achieves **80-100%**).
+
+---
+
 ## 🛠️ Tech Stack
 
 | Component   | Technology                                      |
@@ -158,3 +215,11 @@ workmatch-pro/
 ## 📝 License
 
 MIT License. Free to use, modify, and distribute.
+
+---
+
+## 🙏 Acknowledgements
+
+Built to serve India's informal workforce — the backbone of the economy.
+
+Data inspired by **eShram portal**, **NITI Aayog reports**, **MoSPI PLFS 2022-23**, and **ILO research** on decent work in the informal sector.
