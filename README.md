@@ -9,11 +9,11 @@
 
 The app features a complete job matching flow with live data capabilities, an intuitive search panel with 7 filters, real-time eShram worker counts, and a comprehensive view of official salary benchmarks.
 
-![Screenshot 1](screenshots/Screenshot%202026-03-09%20174757.png)
+![Screenshot 1](screenshots/01_main.png)
 
-![Screenshot 2](screenshots/Screenshot%202026-03-09%20174804.png)
+![Screenshot 2](screenshots/02_search.png)
 
-![Screenshot 3](screenshots/image.png)
+![Screenshot 3](screenshots/03_results.png)
 
 ---
 
