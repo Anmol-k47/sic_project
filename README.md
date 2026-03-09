@@ -7,29 +7,13 @@
 
 ## 📸 Screenshots
 
-### Step 1: Run `python app.py` — Terminal Output
+The app features a complete job matching flow with live data capabilities, an intuitive search panel with 7 filters, real-time eShram worker counts, and a comprehensive view of official salary benchmarks.
 
-The app auto-installs dependencies, builds the database, trains AI models, runs verification tests, and launches the Gradio UI.
+![Screenshot 1](screenshots/Screenshot%202026-03-09%20174757.png)
 
-![Terminal Startup](screenshots/01_terminal_startup.png)
+![Screenshot 2](screenshots/Screenshot%202026-03-09%20174804.png)
 
-### Step 2: Search Panel — Enter Job Query
-
-Describe the job or worker skills in Hindi/English. Use the 7 filters (Category, City, Experience, Work Type, Vehicle, Worker Type, Count) to narrow results.
-
-![Search Panel](screenshots/02_search_panel.png)
-
-### Step 3: AI-Powered Results
-
-The AI detects the category, extracts skills, expands your query, and shows ranked matches with live eShram worker counts. Source badges show 🌐 Live (Adzuna) vs 📚 NCO (verified seed).
-
-![Search Results](screenshots/03_search_results.png)
-
-### Step 4: Official Salary Benchmarks
-
-Scroll down to see government-sourced salary data for all 22 categories, with citations from MoSPI PLFS, NITI Aayog, ILO, and more.
-
-![Salary Benchmarks](screenshots/04_salary_benchmarks.png)
+![Screenshot 3](screenshots/image.png)
 
 ---
 
